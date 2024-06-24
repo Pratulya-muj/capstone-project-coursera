@@ -1,12 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      Homepage
-    </div>
+import{
+  Route,
+  Routes
+}from 'react-router-dom';
+import pages from './utils/pages';
+import Layout from'./components/layout/Layout';
+import Home from './components/pages/Home';
+import Bookings from './components/pages/Bookings';
+import ConfirmedBooking from './components/pages/Bookings/ConfirmedBooking';
+import NotFound from './components/pages/NotFound';
+import UnderConstruction from './components/pages/UnderConstruction';
+const App = () =>{
+  return(
+    <>
+     <Layout>
+       <Routes>
+         <Route path={pages.get('home').path} element={<Home />} />
+         <Route
+           path={pages.get('about').path}
+           element={<UnderConstruction />}
+          />
+          <Route
+           path={pages.get('menu').path}
+           element={<UnderConstruction />}
+          />
+          <Route path={pages.get('bookings').path} elemement={<Bookings />} />
+          <Route
+            path={pages.get('confirmedBooking').path}
+            elemement={<ConfirmedBooking />}
+          />
+          <Route
+           path={pages.get('orderOnline').path}
+           element={<UnderConstruction />}
+          />
+          <Route
+           path={pages.get('login').path}
+           element={<UnderConstruction />}
+          />
+          <Route path="*" elemement={<NotFound />} />
+       </Routes>
+     </Layout>
+    </>
   );
-}
+};
 
 export default App;
